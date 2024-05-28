@@ -9,7 +9,7 @@ namespace FourAirLineFinal.Controllers
 {
     public class BaseController : Controller
     {
-        // GET: Base
+        // Thay doi chuoi ket noi voi csdl o day
         protected DataClasses1DataContext data = new DataClasses1DataContext("DATTOON\\DATER");
     }
 }
