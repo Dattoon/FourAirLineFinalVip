@@ -1,0 +1,31 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model IEnumerable<FourAirLineFinal.Models.Seat>
+
+<h2>Chọn ghế</h2>
+
+<table class="table">
+    <tr>
+        <th>Số ghế</th>
+        <th>Loại ghế</th>
+        <th>Chọn ghế</th>
+    </tr>
+
+    @using (Html.BeginForm("ChooseSeat", "Seats", FormMethod.Post))
+    {
+        foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.SeatNumber)</td>
+                <td>@Html.DisplayFor(modelItem => item.SeatClass)</td>
+                <td>
+                    @Html.Hidden("seatId", item.SeatID)
+                    <input type="submit" value="Chọn ghế này" />
+                </td>
+            </tr>
+        }
+    }
+</table>

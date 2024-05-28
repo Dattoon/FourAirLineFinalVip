@@ -1,0 +1,37 @@
+﻿
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model FourAirLineFinal.Models.Flight
+@{
+    var seats = ViewBag.Seats as List<FourAirLineFinal.Models.Seat>;
+}
+
+<h2>Chi tiết chuyến bay @Model.FlightID</h2>
+
+<p>Airline: @Model.Airline.AirlineName</p>
+<p>Departure Airport: @ViewBag.DepartureAirportName</p>
+<p>Arrival Airport: @ViewBag.ArrivalAirportName</p>
+<p>DepartureTime: @Model.DepartureTime</p>
+<p>ArrivalTime: @Model.ArrivalTime</p>
+<p>Duration: @Model.Duration</p>
+<p>AvailableSeats: @Model.AvailableSeats</p>
+
+<h3>Danh sách ghế trống:</h3>
+
+<ul>
+    @foreach (var seat in seats)
+    {
+        <li>
+            @seat.SeatNumber - @seat.SeatClass
+            @using (Html.BeginForm("ConfirmSeatChoice", "Seats", FormMethod.Post))
+            {
+                @Html.Hidden("seatId", seat.SeatID)
+                <input type="submit" value="Chọn ghế này" />
+            }
+
+
+        </li>
+    }
+</ul>

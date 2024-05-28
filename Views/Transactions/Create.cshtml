@@ -1,0 +1,32 @@
+﻿
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model FourAirLineFinal.Models.TransactionViewModel
+
+<h2>Thanh toán</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(model => model.BookingId)
+
+<div class="form-group">
+    @Html.LabelFor(model => model.PaymentMethodId, "Phương thức thanh toán")
+    @Html.DropDownListFor(model => model.PaymentMethodId, (IEnumerable<SelectListItem>)ViewBag.PaymentMethodId)
+
+</div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Amount, "Số tiền")
+        @Html.EditorFor(model => model.Amount)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.CreditCardInfo, "Thông tin thẻ tín dụng")
+        @Html.EditorFor(model => model.CreditCardInfo)
+    </div>
+
+    <input type="submit" value="Thanh toán" class="btn btn-primary" />
+}

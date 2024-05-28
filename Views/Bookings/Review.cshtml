@@ -1,0 +1,34 @@
+﻿@{
+    ViewBag.Title = "Review";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model FourAirLineFinal.Models.BookingReviewViewModel
+
+<h2>Review Booking</h2>
+
+<h3>Flight Details</h3>
+<p>Airline: @Model.AirlineName</p>
+<p>Departure Airport: @Model.DepartureAirportName</p>
+<p>Arrival Airport: @Model.ArrivalAirportName</p>
+
+<h3>User Details</h3>
+<p>Name: @Model.User.UserName</p>
+<p>Email: @Model.User.Email</p>
+
+@if (Model.Seat != null)
+{
+    <h3>Seat Details</h3>
+    <p>Seat Number: @Model.Seat.SeatNumber</p>
+    <p>Seat Class: @Model.Seat.SeatClass</p>
+}
+
+<h3>Ticket Details</h3>
+<p>Ticket Type: @Model.Ticket.TicketType</p>
+<p>Price: @Model.Ticket.Price</p>
+
+@using (Html.BeginForm("Confirm", "Bookings", FormMethod.Post))
+{
+    @Html.HiddenFor(model => model.Booking.BookingID)
+    <input type="submit" value="Confirm Booking" />
+}

@@ -1,0 +1,37 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model IEnumerable<FourAirLineFinal.Models.Flight>
+
+<h2>Danh sách chuyến bay</h2>
+
+<table class="table">
+    <tr>
+        <th>FlightID</th>
+        <th>AirlineID</th>
+        <th>DepartureAirportID</th>
+        <th>ArrivalAirportID</th>
+        <th>DepartureTime</th>
+        <th>ArrivalTime</th>
+        <th>Duration</th>
+        <th>AvailableSeats</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.FlightID)</td>
+            <td>@Html.DisplayFor(modelItem => item.AirlineID)</td>
+            <td>@Html.DisplayFor(modelItem => item.DepartureAirportID)</td>
+            <td>@Html.DisplayFor(modelItem => item.ArrivalAirportID)</td>
+            <td>@Html.DisplayFor(modelItem => item.DepartureTime)</td>
+            <td>@Html.DisplayFor(modelItem => item.ArrivalTime)</td>
+            <td>@Html.DisplayFor(modelItem => item.Duration)</td>
+            <td>@Html.DisplayFor(modelItem => item.AvailableSeats)</td>
+            <td>@Html.ActionLink("Chi tiết", "Details", new { id = item.FlightID })</td>
+        </tr>
+    }
+</table>
